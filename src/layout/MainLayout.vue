@@ -80,7 +80,7 @@ const route = useRoute()
 const router = useRouter()
 
 // 用户信息 —— 直接写死，不调用任何接口
-const user = JSON.parse(localStorage.getItem('ticket_user') || '{}')
+const user = JSON.parse(localStorage.getItem('ticket_user') || 'null')
 
 // 是否管理员 —— 控制知识库管理菜单的显示
 const isAdmin = user.role === 'admin'

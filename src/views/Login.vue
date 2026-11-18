@@ -45,7 +45,9 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { login } from '../api/user'
+import { useRouter } from 'vue-router'
 
+const  router = useRouter()
 // 表单数据 —— 演示数据写死，不调用接口
 const form = ref({ username: 'admin', password: 'admin123' })
 
@@ -61,10 +63,12 @@ const onLogin = async () => {
   loading.value = true
   try {
     const data = await login(form.value)
+    //后端返回的是JSON字符串，前端自动 .parse 转化为JS对象
     console.log(data)
     localStorage.setItem('ticket_token',data.token)
     localStorage.setItem('ticket_user',JSON.stringify(data))
     ElMessage.success('登录成功')
+    router.push('/ticket/list')
   } finally {
     loading.value = false
   }
