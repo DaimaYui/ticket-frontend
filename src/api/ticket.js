@@ -11,3 +11,7 @@ export function submitTicket(data){
 export function getTicket(id){
     return request.get(`/ticket/${id}`)
 }
+
+export function updateTicket(data,id){
+    return request.put(`/ticket/${id}`,data)
+}
