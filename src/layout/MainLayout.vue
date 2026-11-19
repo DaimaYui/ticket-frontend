@@ -55,7 +55,7 @@
         <!-- 右侧：用户信息 + 退出登录 -->
         <div style="display: flex; align-items: center">
           <el-tag>{{ user.realName }}（{{ isAdmin ? '管理员' : '普通用户' }}）</el-tag>
-          <el-button type="text" style="margin-left: 12px" @click="onLogout">
+          <el-button link style="margin-left: 12px" @click="onLogout">
             退出登录
           </el-button>
         </div>
@@ -80,7 +80,7 @@ const route = useRoute()
 const router = useRouter()
 
 // 用户信息 —— 直接写死，不调用任何接口
-const user = JSON.parse(localStorage.getItem('ticket_user') || 'null')
+const user = JSON.parse(localStorage.getItem('ticket_user') || '{}')
 
 // 是否管理员 —— 控制知识库管理菜单的显示
 const isAdmin = user.role === 'admin'
